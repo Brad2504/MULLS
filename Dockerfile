@@ -64,6 +64,10 @@ RUN DEBIAN_FRONTEND=noninteractive NPROC=${NPROC} bash script/tools/install_dep_
 FROM prereqs
 
 ADD . .
+RUN rm -f /etc/apt/sources.list.d/kitware.list
+RUN sed -i '/kitware/d' /etc/apt/sources.list
+RUN rm -rf /var/lib/apt/lists/*
+
 RUN apt update
 RUN apt upgrade -y
 RUN apt-get install -y libomp-dev

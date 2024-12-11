@@ -26,7 +26,7 @@ fi
 
 containerID=$(docker run -dit --rm \
     --mount type=bind,source="$rosbag_location",target=/data/$(basename "$rosbag_location") \
-    --mount type=bind,source="$output_dir",target=/results mulls-mulls)
+    --mount type=bind,source="$output_dir",target=/results mulls:latest_auto_build)
 
 run_and_source "mkdir -p /tmp/data"
 run_and_source "mkdir -p /tmp/data/pcd"
