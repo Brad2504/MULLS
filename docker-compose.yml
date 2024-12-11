@@ -8,4 +8,4 @@ services:
     volumes:
       - ./demo_data:/mulls/demo_data
     init: true
-    command: script/run_mulls_slam.sh
+    command: bash script/run_mulls_slam.sh

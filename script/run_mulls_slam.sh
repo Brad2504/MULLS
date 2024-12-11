@@ -5,14 +5,14 @@
 sequence_id=00
 
 #experiment unique name
-exp_id=xxx_id
+exp_id=$2
 
 #data path (base folder)
 diskbase=/media/yuepan/BackupPlus/Data/
 
 #data path (project folder)
 #Example demo
-project_folder=./demo_data
+project_folder=$1
 #KITTI
 #project_folder=${diskbase}/kitti-dataset/sequences/${sequence_id}
 #HESAI
@@ -47,7 +47,7 @@ gt_body_pose_file=${project_folder}/${sequence_id}.txt #kitti ground truth file
 calib_file=${project_folder}/calib.txt
 
 #input config file path
-config_file=./script/config/lo_gflag_list_example_demo.txt
+config_file=$3
 #config_file=./script/config/lo_gflag_list_kitti_urban.txt
 #config_file=./script/config/lo_gflag_list_kitti_highway.txt
 #config_file=./script/config/lo_gflag_list_kitti_ultrafast.txt

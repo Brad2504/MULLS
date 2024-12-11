@@ -63,14 +63,14 @@ sudo apt-get install -y libatlas-base-dev
 # SuiteSparse and CXSparse (optional)
 sudo apt-get install -y libsuitesparse-dev
 #clone ceres to local
-git clone -b 2.0.0 --depth 1 https://github.com/ceres-solver/ceres-solver.git
+git clone -b 2.1.0 --depth 1 https://github.com/ceres-solver/ceres-solver.git
 (
   cd ceres-solver
   mkdir build
   cd build
   cmake .. -DBUILD_TESTING=OFF -DBUILD_EXAMPLES=OFF -DBUILD_BENCHMARKS=OFF
   make -j $NPROC
-  checkinstall-auto libceres-dev 2.0.0
+  checkinstall-auto libceres-dev 2.1.0
 )
 [ -z "$KEEP" ] && rm -rf ceres-solver
 echo "install [ceres] done"
@@ -97,7 +97,7 @@ git clone --depth 1 https://github.com/strasdat/Sophus.git
   cd Sophus
   mkdir build
   cd build
-  cmake .. -DBUILD_TESTS=OFF -DBUILD_EXAMPLES=OFF
+  cmake .. -DBUILD_TESTS=OFF -DBUILD_EXAMPLES=OFF -DCMAKE_VERBOSE_MAKEFILE=ON
   make -j $NPROC
   checkinstall-auto libsophus-dev 0.0.0
 )

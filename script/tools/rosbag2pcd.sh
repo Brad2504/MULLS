@@ -22,11 +22,16 @@
 
 # batch processing all the ros bags in the folder and save them all into a single folder for pcd files
 # (comment the following four lines if you want to do the convertion one by one)
-rosbag_folder_path=xxxx/xxxx
-pcd_folder_path=xxxx/xxxx
-for rosbag in ${rosbag_folder_path}/*bag
+source /opt/ros/noetic/setup.bash
+roscore &
+sleep 5
+rosbag_folder_path=$1
+pcd_folder_path=$2
+pointcloud_topic=$3
+
+for rosbag in ${rosbag_folder_path}/*.bag;
 do 
-	rosrun pcl_ros bag_to_pcd ${rosbag} sensor_msgs/PointCloud2 ${pcd_folder_path}
+	rosrun pcl_ros bag_to_pcd ${rosbag} $pointcloud_topic ${pcd_folder_path}
 done
 
 # do the processing for a single rosbag
